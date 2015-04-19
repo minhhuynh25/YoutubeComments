@@ -15,10 +15,9 @@ def topic_post():
 
 @app.route('/', methods=['POST'])
 def render_comments():
-	topComment = '1'
-	topResponse = '2'
+	topComment = 'test : this will be the most recent comment'
 	topic = request.form['text']
-	return render_template('comments.html', topComment = topComment, topResponse = topResponse, topic = topic)
+	return render_template('comments.html', topComment = topComment, topic = topic)
    
 
 # https://gdata.youtube.com/feeds/api/videos/w4mKtIjiKZU/comments
