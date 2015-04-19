@@ -1,22 +1,12 @@
 <!doctype html>
-<title>Flaskr</title>
+<title>Youtube Topics</title>
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 
-<!doctype html>
-<title>Search your favorite Youtube topic</title>
+
+<h1> Search your favorite Youtube topic </h1>
 <form action="." method="POST">
     <input type="text" name="text">
     <input type="submit" name="my-form" value="Send">
 </form>
-
-{% if topComment %}
-	<p>What do people think?</p>
-	<p>{{ topComment }}</p>
-{% endif %}
-
-{% if topResponse %}
-	<p>How did people respond?</p>
-	<p>{{ topResponse }}</p>
-{% endif %}
 
 

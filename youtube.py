@@ -3,12 +3,27 @@ from flask import request
 from flask import render_template
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-	topComment = 'this is the top comment'
-	topResponse = 'this is the top response'
-    render_template("index.html", topComment, topResponse)
-    # return 'this doesnt work'
+
+
+@app.route('/')
+def topic_post():
+	return render_template('index.html')
+
+@app.route('/', methods=['POST'])
+def render_comments():
+	topComment = '1'
+	topResponse = '2'
+	topic = request.form['text']
+	return render_template('comments.html', topComment = topComment, topResponse = topResponse, topic = topic)
+   
+
+
+# @app.route("/")
+# def render_comments():
+# 	topComment = '1'
+# 	topResponse = '2'
+# 	return render_template('index.html', topComment = topComment, topResponse = topResponse)
+
 
 # @app.route("/", methods=['POST'])
 # def hello():
