@@ -1,6 +1,10 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+
+import urllib
+from xml.dom import minidom
+
 app = Flask(__name__)
 
 
@@ -16,6 +20,14 @@ def render_comments():
 	topic = request.form['text']
 	return render_template('comments.html', topComment = topComment, topResponse = topResponse, topic = topic)
    
+
+# https://gdata.youtube.com/feeds/api/videos/w4mKtIjiKZU/comments
+def getAllComments(videoCode):
+	url = 'https://gdata.youtube.com/feeds/api/videos/' + videoCode + '/comments'
+	xmldoc = minidom.parse(urllib.urlopen(url))
+	contentlist = xmldoc.getElementsByTagName('content')
+	return contentlist[0].firstChild.nodeValue
+
 
 
 # @app.route("/")
