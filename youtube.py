@@ -2,17 +2,14 @@ from flask import Flask
 from flask import request
 from flask import render_template
 
+import random
 import urllib
 from xml.dom import minidom
 
+# from search import *
 from apiclient.discovery import build
 from apiclient.errors import HttpError
 from oauth2client.tools import argparser
-
-# from search import get_youtube_id
-
-app = Flask(__name__)
-
 
 
 # Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
@@ -83,6 +80,7 @@ def get_youtube_id(query):
 
 
 
+app = Flask(__name__)
 
 @app.route('/')
 def topic_post():
@@ -104,9 +102,10 @@ def getFirstComment(videoCode):
 	url = 'https://gdata.youtube.com/feeds/api/videos/' + str(videoCode) + '/comments'
 	xmldoc = minidom.parse(urllib.urlopen(url))
 	contentlist = xmldoc.getElementsByTagName('content')
-	bestComment = contentlist[0].firstChild.nodeValue
-	if bestComment:
-		return bestComment
+	# bestComment = contentlist[0].firstChild.nodeValue
+	randomComment = contentlist[random.randint(0,len(contentlist)-1)].firstChild.nodeValue
+	if randomComment:
+		return randomComment
 	else:
 		return 'Comments are disabled for this video'
 
