@@ -15,17 +15,6 @@ app = Flask(__name__)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 # Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
 # tab of
 #   https://cloud.google.com/console
@@ -91,13 +80,6 @@ def get_youtube_id(query):
 
 
 # print get_youtube_id('coldplay')
-
-
-
-
-
-
-
 
 
 
